@@ -54,7 +54,7 @@
     {:else if currentStep == 5}
       <ColorLines {colorPalette} seasonData={["1","2", "3", "4", "5", "6", "7"].map(i => seasonColors[i])}/>
     {:else if currentStep ==6 }
-      <ColorLines {colorPalette} seasonData={seasonColors}/>
+      <ColorLines {colorPalette} seasonData={Object.entries(seasonColors).map(s => s[1])}/>
     {:else if currentStep == 7}
       <ColorLines colorPalette={colorGroups} seasonData={seasonColorsGrouped}/>
     {:else if currentStep == 8}
@@ -74,9 +74,7 @@
 
   <!--At the end of the Scroller, show the interactive raster with all pictures-->
   <main>
-
     <Raster imgData={data} {colorPalette}/>
-
   </main>
  
 <style>

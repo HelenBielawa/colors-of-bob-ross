@@ -1,22 +1,9 @@
 <script>
     import ColorLine from "./ColorLine.svelte";
-  import ColorLines from "./ColorLines.svelte";
     export let imgData;
     export let colorPalette;
 
     let showPic = false;
-
-    function primaryColor(img){
-        let colorData = JSON.parse(img.color_presence.replaceAll("'", '"'));
-        let max = Object.values(colorData)
-                        .reduce((max, obj) => {   
-                            const objMax = Math.max(...Object.values(obj));
-                            return Math.max(max, objMax);
-                        }, 0);
-        let maxColor = Object.keys(colorData)
-                        .find(key => colorData[key] === max);
-        return maxColor;
-    }
 
     function findPic(index){
         return imgData.find(img => img.painting_index == showPic)
@@ -77,6 +64,19 @@
     }
     @media (min-width: 768px) {
         .cell {
+            width: 2vw;
+            height: 1.5vw;
+        }
+        .cellwrapper{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 80%;
+            max-height: 90%;
+        }
+    }
+        @media (min-width: 1000px) {
+        .cell {
             width: 1.6vw;
             height: 1.2vw;
         }
@@ -88,5 +88,6 @@
             max-height: 90%;
         }
     }
+
 
 </style>

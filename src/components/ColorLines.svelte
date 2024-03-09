@@ -1,7 +1,7 @@
 <script>
     export let colorPalette;
     export let seasonData;
-
+console.log("seasondata:", seasonData)
     import { scaleLinear } from "d3-scale";
     import SeasonTooltip from "./SeasonTooltip.svelte";
 
@@ -40,7 +40,7 @@
 
 <div class="lines-container" bind:clientHeight={height}>
 
-  {#each Object.entries(seasonData) as [index, season]}
+  {#each seasonData as season, index}
       
     <div class="circle-container">
         {#each colorPalette as color}
@@ -50,12 +50,12 @@
                 role="img"
                 on:mouseover={(event) => (tooltipStatus = true,
                                       tooltipColor = color,
-                                      tooltipSeason = index,
+                                      tooltipSeason = index+1,
                                       tooltipX = event.clientX,
                                       tooltipY = event.clientY)}
                 on:focus={(event) => (tooltipStatus = true,
                                       tooltipColor = color,
-                                      tooltipSeason = index)}
+                                      tooltipSeason = index+1)}
                 on:mouseout={() => tooltipStatus = false}
                 on:blur={() => tooltipStatus = false}
                 >

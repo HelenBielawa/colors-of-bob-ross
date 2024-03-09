@@ -22,7 +22,8 @@
 
 <div class="circle-container" bind:clientWidth={width}>
 
-    {#each colorPalette as color, i}
+    {#each colorPalette as color}
+
         {#if img != null}
         <svg width="{width}" height="{circleRadius*2}">
             <circle cx="{circleRadius/2}"
@@ -40,6 +41,7 @@
                     stroke="{fill == "all" ? 'transparent' : '#111213'}"/>
         </svg>
        {/if}
+       
     {/each}
 
 </div>

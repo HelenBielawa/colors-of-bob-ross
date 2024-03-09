@@ -6,6 +6,7 @@
     export let colorHex; //hex code of the hovered color
     export let tooltipX; //event.clientX
     export let tooltipY; //event.clientY
+    console.log("season:", season)
 
     let tooltipWidth;
     let tooltipHeight;
@@ -15,12 +16,12 @@
                                         color.color_hex === colorHex)[0].color_name;
     //get all data for img with the hovered color in the hovered season
     const tooltipData = imgData.filter(img =>
-                                        img.season == season+1 && img.color_hex.includes(colorHex));
+                                        img.season == season && img.color_hex.includes(colorHex));
 
     //number of img with the hovered color in the hovered season
     const imgCount = tooltipData.length;
     const imgPercentage = Math.round(
-                            (imgCount / imgData.filter(img => img.season == season+1)
+                            (imgCount / imgData.filter(img => img.season == season)
                             .length)* 100);
 
     //change the img in the tooltip every 800ms
@@ -41,7 +42,7 @@
     style="background:white;top: {tooltipY}px; left: {tooltipX}px">
 
     <p>
-        <b>{season+1}. Staffel</b>: 
+        <b>{season}. Staffel</b>: 
         {imgCount} Bilder mit <b>{colorName}</b> gemalt 
         ({imgPercentage} Prozent dieser Staffel)<br>
     </p>
@@ -59,7 +60,6 @@
         box-shadow: rgba(0, 0, 0, 0.15) 2px 3px 8px;
         border-radius: 1px;
         pointer-events: none;
-        width: 15%;
         height: auto;
         transition: transform 0.1s ease;
         background-image: linear-gradient(to bottom right, #ffffff, #eaeaea);
@@ -73,6 +73,16 @@
     .tooltip p {
         font-size: smaller;
         width: 90%;
+    }
+    @media (min-width: 350px) {
+    .tooltip {
+        width: 60%;
+    }
+    }
+    @media (min-width: 768px) {
+    .tooltip {
+        width: 15%;
+    }
     }
 
 </style>
