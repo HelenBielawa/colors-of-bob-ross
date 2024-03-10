@@ -2,7 +2,7 @@
 This project is a Svelte application with interactive data visualisation. It shows the use of different colours in the episodes of the TV show "The Colours of Bob Ross" as a Scrollyteller and provides an interactive overview of all paintings and their colours.
 
 ## See the result
-The result will be published here: https://colors-of-bob-ross.vercel.app/
+The result is published here: https://colors-of-bob-ross.vercel.app/
 
 ## Installation:
 Clone this Repo
