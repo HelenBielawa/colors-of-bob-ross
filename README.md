@@ -5,10 +5,10 @@ This project is a Svelte application with interactive data visualisation. It sho
 The result is published here: https://colors-of-bob-ross.vercel.app/
 
 ## Installation:
-Clone this Repo
-Go to the directory
-Run npm i to install the dependencies
-Run npm run dev
+- Clone this Repo
+- Go to the directory
+- Run npm i to install the dependencies
+- Run npm run dev
 
 ## Data:
 I used this dataset: https://github.com/jwilber/Bob_Ross_Paintings
