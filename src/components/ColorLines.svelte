@@ -1,11 +1,11 @@
 <script>
     export let colorPalette;
     export let seasonData;
-console.log("seasondata:", seasonData)
+    $: console.log("seasondata:", Object.entries(seasonData))
     import { scaleLinear } from "d3-scale";
     import SeasonTooltip from "./SeasonTooltip.svelte";
 
-    let height = 600;
+    let height;
 
     $: circleBoxSize = height/31;
 

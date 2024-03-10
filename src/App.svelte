@@ -23,17 +23,26 @@
                                   }, {});
           
   let currentStep = 0;
+
   //text content for Scrolly Boxes
-  const steps = ["Die Farben von Bob Ross",
-                "In seiner Serie 'The Joy of Painting' hat Ross in jeder Episode ein Bild gemalt und das Publikum angeleitet, mitzumachen. In einzelnen Folgen malte er nicht selbst, sondern lud sich einen Gast ein. So sind in 31 Staffeln insgesamt 403 Bilder entstanden. Dabei hat Ross insgesamt weniger Farben genutzt, als in jedem handelsüblichen Wasserfarbkasten enthalten sind.",
-                "Einige Farben nutzte Ross nur sehr selten, andere fast immer. Das wird deutlich, wenn man zählt, wie oft welche Farbe in den Episoden von 'The Joy of Painting' genutzt wurde. Zum Beispiel malte Ross nur 55 Mal mit dem Braunton 'Burnt Umber'. Mit dem hellen Pink 'Indian Red'malte Ross sogar nur ein einziges Mal. Im Gesamtvergleich verschwindet es.",
-                "In der ersten Staffel von 'The Joy of Painting' startete Ross mit diesen neun Farben. Klick auf die Farben, um zu sehen, wie oft und für welche Bilder Ross sie in dieser Staffel genutzt hat.",
-                "In der zweiten Staffel kam mit 'Burnt Umber' ein zweiter Braunton dazu, und zwei Gelbvarianten.",
-                "Ab der siebten Staffel (unterste Palette) tauschte Ross 'Burnt Umber durch einen anderen Braunton aus: Ab dann war regelmäßig ein Klecks 'Dark Sienna' auf seiner Farbpalette.",
-                "Im Gesamtüberblick wirken schwarz und weiß sehr präsent, schließlich hat Ross fast immer mindestens einen Schwarz- oder Weißton als Grundierung genutzt. Aber wenn wir auch die anderen Farben gruppieren...",
-                "...sehen wir, dass Braun, Gelb und Blau viel präsenter sind.",
-                "Durch die Schichtung von Farben und die Arbeit auf der Leinwand haben die Bilder natürlich eine höhere Farbvarianz als 15 Farben. Als nächstes siehst du alle 403 Bilder aus 'The Joy of Painting' im Überblick, jeweils in der Farbe, die im Bild dominant ist. Klick auf ein einzelnes Bild, um in der Palette zu sehen, mit welchen Farben Ross es gemalt hat."
-                ]
+    const steps = [
+        "<strong>Die Farben von Bob Ross</strong>",
+
+        "In seiner Serie 'The Joy of Painting' hat Ross in jeder Episode ein Bild gemalt und das Publikum angeleitet, mitzumachen. In einzelnen Folgen malte er nicht selbst, sondern lud sich einen Gast ein. So sind in 31 Staffeln insgesamt 403 Bilder entstanden. Dabei hat Ross insgesamt weniger Farben genutzt, als in jedem handelsüblichen Wasserfarbkasten enthalten sind.",
+
+        "<span style='position: relative; vertical-align: middle;'>Mit einigen Farben malte Ross sehr selten, andere kommen in fast jedem Bild vor. Das wird deutlich, wenn man zählt, wie oft welche Farbe in den Episoden von 'The Joy of Painting' genutzt wurde. Ross malte nur 55 Mal mit dem Braunton 'Burnt Umber' <span style='display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #8A3324;'></span>. Mit dem hellen Pink 'Indian Red' <span style='display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #CD5C5C;'></span> malte Ross sogar nur ein einziges Mal. Im Gesamtvergleich verschwindet es.</span>",
+
+        "In der ersten Staffel von 'The Joy of Painting' startete Ross mit diesen neun Farben. Klick auf die Farbtupfer, um zu sehen, wie oft und für welche Bilder Ross sie in dieser Staffel genutzt hat.",
+        
+        "<span style='position: relative; vertical-align: middle;'>In der zweiten Staffel kam mit 'Burnt Umber' <span style='display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #8A3324;'></span> ein zweiter Braunton dazu, und zwei Gelbvarianten <span style='display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #C79B00;'></span> <span style='display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #FFB800;'></span>.</span>",
+
+        "<span style='position: relative; vertical-align: middle;'>Ab der siebten Staffel (unterste Palette) tauschte Ross 'Burnt Umber' durch einen anderen Braunton aus: Ab dann war regelmäßig ein Klecks 'Dark Sienna' <span style='display: inline-block; width: 20px; height: 20px; border-radius: 50%; background-color: #4E1500;'></span> auf seiner Farbpalette.</span>",
+
+        "Im Gesamtüberblick wirken schwarz und weiß sehr präsent, schließlich hat Ross fast immer mindestens einen Schwarz- oder Weißton als Grundierung genutzt. Aber wenn wir auch die anderen Farben gruppieren...",
+        "...sehen wir, dass braune, gelbe und blaue Töne viel präsenter sind.",
+
+        "Durch die Schichtung von Farben und die Arbeit auf der Leinwand haben die Bilder natürlich eine höhere Farbvarianz als 15 Farben. Die folgende Ansicht zeigt alle 403 Bilder aus 'The Joy of Painting' jeweils in der Farbe, die im Bild dominant ist. Klick auf ein einzelnes Bild, um in der Palette zu sehen, mit welchen Farben Ross (oder einer seiner Gäste) es gemalt hat."
+    ];
 
 </script>
   <!--Change the Dataviz in the background based on Scrolly Step-->
@@ -56,8 +65,9 @@
     {:else if currentStep ==6 }
       <ColorLines {colorPalette} seasonData={Object.entries(seasonColors).map(s => s[1])}/>
     {:else if currentStep == 7}
-      <ColorLines colorPalette={colorGroups} seasonData={seasonColorsGrouped}/>
+      <ColorLines colorPalette={colorGroups} seasonData={Object.entries(seasonColorsGrouped).map(s => s[1])}/>
     {:else if currentStep == 8}
+
     {/if}
   </div>
 
@@ -95,14 +105,14 @@
   }
 
   .step-content {
-    background: #B7B3BC;
+    background: #FFFFFF;
     padding: 1rem 1rem;
     border-radius: 5px;
     width: 50vw;
     height: min-content;
     color: black;
     opacity: 0.94;
-    box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 1px 0px rgba(227, 226, 226, 0.75);
     transition: transform 0.1s ease;
   }
   .step.active {

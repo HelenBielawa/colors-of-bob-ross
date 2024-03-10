@@ -1,6 +1,7 @@
 <script>
     import imgData from "../data/paintings_with_dominant_color.json";
     import colorData from "../data/color_counts.json";
+  import { style } from "d3";
 
     export let season; //number of the season
     export let colorHex; //hex code of the hovered color
@@ -10,7 +11,6 @@
 
     let tooltipWidth;
     let tooltipHeight;
-
     //translate hex code to color name
     const colorName = colorData.filter(color =>
                                         color.color_hex === colorHex)[0].color_name;
@@ -24,15 +24,16 @@
                             (imgCount / imgData.filter(img => img.season == season)
                             .length)* 100);
 
-    //change the img in the tooltip every 800ms
+    //change the img in the tooltip every second
     let i = 0;
 	setInterval(() => {
         i += 1;
         if (i >= tooltipData.length) {
             i = 0;
         }
-	}, 800);
+	}, 1000);
     $: curr_img = tooltipData[i];
+
 
 </script>
 
@@ -64,6 +65,7 @@
         transition: transform 0.1s ease;
         background-image: linear-gradient(to bottom right, #ffffff, #eaeaea);
         padding: 2px;
+        transform: translate(-50%, 0);
     }
     .tooltip img {
         width: 90%;
@@ -76,7 +78,7 @@
     }
     @media (min-width: 350px) {
     .tooltip {
-        width: 60%;
+        width: 40%;
     }
     }
     @media (min-width: 768px) {
